@@ -64,13 +64,7 @@ void Game::init(const Configuration &config)
         isRunning = false;
     }
 
-    tile0.addComponent<TileComponent>(200, 200, 32, 32, 0);
-
-    tile1.addComponent<TileComponent>(268, 200, 32, 32, 1);
-    tile1.addComponent<ColliderComponent>("dirt");
-
-    tile2.addComponent<TileComponent>(300, 200, 32, 32, 2);
-    tile2.addComponent<ColliderComponent>("grass");
+    Map::loadMap("/maps/p16x16.map", 16, 16);
 
     newPlayer.addComponent<TransformComponent>();
     newPlayer.addComponent<KeyboardController>();

@@ -5,6 +5,7 @@
 #include "tile_component.hpp"
 
 
+
 TileComponent::TileComponent(int x, int y, int w, int h, int id)
 {
     tileRect.x = x;
@@ -16,13 +17,13 @@ TileComponent::TileComponent(int x, int y, int w, int h, int id)
     switch (tileID)
     {
     case 0:
-        path = "/images/water.png";
-        break;
-    case 1:
         path = "/images/dirt.png";
         break;
-    case 2:
+    case 1:
         path = "/images/grass.png";
+        break;
+    case 2:
+        path = "/images/water.png";
         break;
     default:
         break;

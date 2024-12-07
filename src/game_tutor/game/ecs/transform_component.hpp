@@ -13,7 +13,7 @@ public:
     int width = 32;
     int scale = 1;
 
-    int speed = 2;
+    int speed = 1;
 
     TransformComponent();
     TransformComponent(float x, float y);

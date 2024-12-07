@@ -10,7 +10,7 @@ public:
 
     TileComponent() = default;
 
-    TileComponent(int x, int y, int w, int h, int s);
+    TileComponent(int x, int y, int w, int h, int id);
 
     void init() override;
     // void update() override;
