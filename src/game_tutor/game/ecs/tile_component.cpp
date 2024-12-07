@@ -5,9 +5,8 @@
 #include "tile_component.hpp"
 
 
-TileComponent::TileComponent(SDL_Renderer* ren, int x, int y, int w, int h, int id)
+TileComponent::TileComponent(int x, int y, int w, int h, int id)
 {
-    renderer = ren;
     tileRect.x = x;
     tileRect.y = y;
     tileRect.w = w;
@@ -35,6 +34,6 @@ void TileComponent::init()
     entity->addComponent<TransformComponent>(static_cast<float>(tileRect.x), static_cast<float>(tileRect.y), tileRect.w, tileRect.h, 1);
     transform = &entity->getComponent<TransformComponent>();
 
-    entity->addComponent<SpriteComponent>(path, renderer);
+    entity->addComponent<SpriteComponent>(path);
     sprite = &entity->getComponent<SpriteComponent>();
 }

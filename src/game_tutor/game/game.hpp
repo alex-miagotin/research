@@ -5,6 +5,7 @@
 class SDL_Window;
 class SDL_Renderer;
 class ColliderComponent;
+union SDL_Event;
 
 class Game {
 
@@ -30,12 +31,13 @@ public:
 
     bool running() { return isRunning; }
 
+    static void addTile(int id, int x, int y);
+    static SDL_Renderer *renderer;
     static SDL_Event event;
     static std::vector<ColliderComponent*> colliders;
 private:
     bool isRunning{false};
     SDL_Window *window;
-    SDL_Renderer *renderer;
     int count = 0;
     Configuration config;
 };

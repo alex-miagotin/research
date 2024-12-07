@@ -4,19 +4,17 @@
 
 class TransformComponent;
 class SDL_Texture;
-class SDL_Renderer;
 struct SDL_Rect;
 
 class SpriteComponent : public Component
 {
 private:
-    TransformComponent* transform;    
-    SDL_Renderer* renderer;
+    TransformComponent* transform;
     SDL_Texture* texture;
     SDL_Rect srcRect, destRect;
 
 public:
-    SpriteComponent(const char* path, SDL_Renderer* ren);
+    SpriteComponent(const char* path);
 
     ~SpriteComponent();
 

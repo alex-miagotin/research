@@ -19,6 +19,7 @@ auto& tile0(manager.addEntity());
 auto& tile1(manager.addEntity());
 auto& tile2(manager.addEntity());
 SDL_Event Game::event;
+SDL_Renderer *Game::renderer = nullptr;
 
 std::vector<ColliderComponent*> Game::colliders;
 
@@ -63,23 +64,21 @@ void Game::init(const Configuration &config)
         isRunning = false;
     }
 
-    map = new Map(renderer);
+    tile0.addComponent<TileComponent>(200, 200, 32, 32, 0);
 
-    tile0.addComponent<TileComponent>(renderer, 200, 200, 32, 32, 0);
-
-    tile1.addComponent<TileComponent>(renderer, 268, 200, 32, 32, 1);
+    tile1.addComponent<TileComponent>(268, 200, 32, 32, 1);
     tile1.addComponent<ColliderComponent>("dirt");
 
-    tile2.addComponent<TileComponent>(renderer, 300, 200, 32, 32, 2);
+    tile2.addComponent<TileComponent>(300, 200, 32, 32, 2);
     tile2.addComponent<ColliderComponent>("grass");
 
     newPlayer.addComponent<TransformComponent>();
     newPlayer.addComponent<KeyboardController>();
-    newPlayer.addComponent<SpriteComponent>("/images/MarioIdle.png", renderer);
+    newPlayer.addComponent<SpriteComponent>("/images/MarioIdle.png");
     newPlayer.addComponent<ColliderComponent>("player");
 
     wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
-    wall.addComponent<SpriteComponent>("/images/wall.png", renderer);
+    wall.addComponent<SpriteComponent>("/images/wall.png");
     wall.addComponent<ColliderComponent>("wall");
 }
 
@@ -125,4 +124,10 @@ void Game::clean()
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     std::cout << "Game Cleaned" << std::endl;
+}
+
+void Game::addTile(int id, int x, int y)
+{
+    auto& tile(manager.addEntity());
+    tile.addComponent<TileComponent>(x, y, 32, 32, id);
 }

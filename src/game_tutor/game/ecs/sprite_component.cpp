@@ -3,9 +3,8 @@
 #include "sprite_component.hpp"
 #include "transform_component.hpp"
 #include "../texture_manager.hpp"
-#include "ecs.hpp"
 
-SpriteComponent::SpriteComponent(const char* path, SDL_Renderer* ren) : renderer(ren)
+SpriteComponent::SpriteComponent(const char* path)
 {
     setTexture(path);
 }
@@ -22,7 +21,7 @@ void SpriteComponent::setTexture(const char* path)
     //     entity->addComponent<TransformComponent>();
     // }
 
-    texture = TextureManager::LoadTexture(path, renderer);
+    texture = TextureManager::LoadTexture(path);
 }
 
 void SpriteComponent::init()
@@ -46,6 +45,6 @@ void SpriteComponent::update()
 
 void SpriteComponent::render()
 {
-    TextureManager::Render(renderer, texture, srcRect, destRect);
+    TextureManager::Render(texture, srcRect, destRect);
 }
 
