@@ -5,6 +5,10 @@
 
 #include "game/game.hpp"
 
+#ifndef PROJECT_NAME
+    #define PROJECT_NAME ""
+#endif
+
 int main() {
     constexpr int FPS = 60;
     constexpr int frameDelay = 1000 / FPS;
@@ -13,7 +17,7 @@ int main() {
     int frameTime;
 
     Game *game = new Game();
-    game->init({"Mario", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false});
+    game->init({PROJECT_NAME, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false});
 
     while (game->running()) {
 

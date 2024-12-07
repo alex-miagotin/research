@@ -17,10 +17,10 @@ SpriteComponent::~SpriteComponent()
 
 void SpriteComponent::setTexture(const char* path)
 {
-    if (!entity->hasComponent<TransformComponent>())
-    {
-        entity->addComponent<TransformComponent>();
-    }
+    // if (!entity->hasComponent<TransformComponent>())
+    // {
+    //     entity->addComponent<TransformComponent>();
+    // }
 
     texture = TextureManager::LoadTexture(path, renderer);
 }
