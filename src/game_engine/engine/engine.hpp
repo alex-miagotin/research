@@ -1,5 +1,8 @@
 #pragma once
 
+#define SCREEN_WIDTH 960
+#define SCREEN_HEIGHT 640
+
 namespace engine {
 
 class Engine
@@ -21,7 +24,7 @@ public:
     void render();
     void events();
 
-    bool isRunning() const { return m_isRunning; }
+    inline bool isRunning() const { return m_isRunning; }
 
 private:
     Engine() = default;
@@ -31,6 +34,9 @@ private:
 
     bool m_isRunning = false;
     static Engine* m_instance;
+
+
+
 };
 
 } // namespace engine
