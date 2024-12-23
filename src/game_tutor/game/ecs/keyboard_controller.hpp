@@ -1,13 +1,14 @@
 #pragma once
 
 #include "ecs.hpp"
-
-class TransformComponent;
+#include "transform_component.hpp"
+#include "sprite_component.hpp"
 
 class KeyboardController : public Component
 {
 private:
     TransformComponent* transform;
+    SpriteComponent* sprite;
 
 public:
     void init() override;

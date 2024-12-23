@@ -1,40 +1,26 @@
-#include "SDL2/SDL.h"
-
-#include "transform_component.hpp"
-#include "sprite_component.hpp"
 #include "tile_component.hpp"
 
-
-
-TileComponent::TileComponent(int x, int y, int w, int h, int id)
+TileComponent::TileComponent(int srcX, int srcY, int xPos, int yPos, int tileSize, int scale)
 {
-    tileRect.x = x;
-    tileRect.y = y;
-    tileRect.w = w;
-    tileRect.h = h;
-    tileID = id;
+    position.x = xPos;
+    position.y = yPos;
 
-    switch (tileID)
-    {
-    case 0:
-        path = "/images/dirt.png";
-        break;
-    case 1:
-        path = "/images/grass.png";
-        break;
-    case 2:
-        path = "/images/water.png";
-        break;
-    default:
-        break;
-    }
+    srcRect.x = srcX;
+    srcRect.y = srcY;
+    srcRect.w = srcRect.h = tileSize;
+
+    destRect.x = xPos;
+    destRect.y = yPos;
+    destRect.w = destRect.h = tileSize * scale;
 }
 
-void TileComponent::init()
+Rect &TileComponent::getDestRect()
 {
-    entity->addComponent<TransformComponent>(static_cast<float>(tileRect.x), static_cast<float>(tileRect.y), tileRect.w, tileRect.h, 1);
-    transform = &entity->getComponent<TransformComponent>();
-
-    entity->addComponent<SpriteComponent>(path);
-    sprite = &entity->getComponent<SpriteComponent>();
+    return destRect;
 }
+
+Rect &TileComponent::getSrcRect()
+{
+    return srcRect;
+}
+

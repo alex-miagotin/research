@@ -5,3 +5,4 @@
 #include "keyboard_controller.hpp"
 #include "collider_component.hpp" 
 #include "tile_component.hpp"
+#include "projectile_component.hpp"

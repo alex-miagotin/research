@@ -1,17 +1,26 @@
 #pragma once
 
 #include <vector>
+#include <SDL2/SDL.h>
 
-class SDL_Window;
-class SDL_Renderer;
-class ColliderComponent;
-union SDL_Event;
+#include "common/common.hpp"
+
+#include "assets_manager.hpp"
 
 class Game {
 
 public:
     Game();
     ~Game();
+
+    enum groupLabels : std::size_t
+    {
+        groupMap,
+        groupPlayers,
+        groupEnemies,
+        groupColliders,
+        groupProjectiles,
+    };
 
     struct Configuration {
         const char* title;
@@ -20,6 +29,8 @@ public:
         int width;
         int height;
         bool fullscreen;
+        int scale;
+        int tileSize;
     };
 
     void init(const Configuration& config);
@@ -29,14 +40,14 @@ public:
     void render();
     void clean();
 
-    bool running() { return isRunning; }
-
-    static void addTile(int id, int x, int y);
+    bool running() { return isRunning; } 
+    
     static SDL_Renderer *renderer;
     static SDL_Event event;
-    static std::vector<ColliderComponent*> colliders;
+    static bool isRunning;
+    static Rect camera;
+    static AssetManager* assets;
 private:
-    bool isRunning{false};
     SDL_Window *window;
     int count = 0;
     Configuration config;

@@ -1,5 +1,3 @@
-#include <SDL2/SDL.h>
-
 #include "game.hpp"
 #include "texture_manager.hpp"
 #include "game_object.hpp"

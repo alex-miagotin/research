@@ -1,7 +1,6 @@
 #pragma once
 
-class SDL_Texture;
-struct SDL_Rect;
+#include <SDL2/SDL.h>
 
 class GameObject {
 public:

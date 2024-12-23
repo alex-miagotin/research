@@ -11,17 +11,20 @@ set (
     # game
     game/game.cpp
     game/texture_manager.cpp
-    game/game_object.cpp
+    game/assets_manager.cpp
     game/map.cpp
     # ecs
+    game/ecs/ecs.cpp
     game/ecs/collider_component.cpp
     game/ecs/keyboard_controller.cpp
     game/ecs/sprite_component.cpp
     game/ecs/transform_component.cpp
     game/ecs/tile_component.cpp
+    game/ecs/projectile_component.cpp
     # common
     game/common/vector2D.cpp
     game/common/collision.cpp
+    game/common/common.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})

@@ -14,14 +14,23 @@ Map *map;
 
 Manager manager;
 auto& newPlayer(manager.addEntity());
-auto& wall(manager.addEntity());
-auto& tile0(manager.addEntity());
-auto& tile1(manager.addEntity());
-auto& tile2(manager.addEntity());
+
 SDL_Event Game::event;
 SDL_Renderer *Game::renderer = nullptr;
+bool Game::isRunning = false;
+Rect Game::camera = {0, 0, 800, 640};
 
-std::vector<ColliderComponent*> Game::colliders;
+AssetManager *Game::assets = new AssetManager(&manager);
+
+auto& tiles(manager.getGroup(Game::groupLabels::groupMap));
+auto& players(manager.getGroup(Game::groupLabels::groupPlayers));
+auto& colliders(manager.getGroup(Game::groupLabels::groupColliders));
+auto& projectiles(manager.getGroup(Game::groupLabels::groupProjectiles));
+
+SDL_Rect rectToSDLRect(const Rect& rect, const Rect& camera = {0, 0, 0, 0})
+{
+    return { .x = rect.x - camera.x, .y = rect.y - camera.y, .w = rect.w, .h = rect.h };
+}
 
 Game::Game()
 {
@@ -29,6 +38,7 @@ Game::Game()
 
 Game::~Game()
 {
+    printf("Game destroyed\n");
 }
 
 void Game::init(const Configuration &config)
@@ -53,7 +63,7 @@ void Game::init(const Configuration &config)
         renderer = SDL_CreateRenderer(window, -1, 0);
         if (renderer)
         {
-            // SDL_SetRenderDrawColor(renderer, 255, 255, 255, 1);
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 1);
             std::cout << "Renderer created!..." << std::endl;
         }
 
@@ -64,16 +74,27 @@ void Game::init(const Configuration &config)
         isRunning = false;
     }
 
-    Map::loadMap("/maps/p16x16.map", 16, 16);
+    assets->addTexture("collider", "/images/col_tex.png");
+    assets->addTexture("terrain", "/sprites/terrain_ss.png");
+    assets->addTexture("player", "/sprites/player/player_anims.png");
+    assets->addTexture("projectile", "/images/proj.png");
 
-    newPlayer.addComponent<TransformComponent>();
-    newPlayer.addComponent<KeyboardController>();
-    newPlayer.addComponent<SpriteComponent>("/images/MarioIdle.png");
+    map = new Map(manager, 25, 20, config.tileSize, config.scale);
+    map->loadMap("/maps/map.map");
+
+    std::map<const char*, Animation> playerAnims = {
+        {"idle", Animation(0, 3, 100)},
+        {"walk", Animation(1, 8, 100)}
+    };
+    newPlayer.addComponent<TransformComponent>(Vector2D(config.width / 2, config.height / 2), 32, 32, config.scale);
+    newPlayer.addComponent<SpriteComponent>("player", playerAnims, "idle");
     newPlayer.addComponent<ColliderComponent>("player");
+    newPlayer.addGroup(groupLabels::groupPlayers);
+    newPlayer.addComponent<KeyboardController>();
 
-    wall.addComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
-    wall.addComponent<SpriteComponent>("/images/wall.png");
-    wall.addComponent<ColliderComponent>("wall");
+    assets->createProjectile(Vector2D(400, 600), Vector2D(1, 0), 200, 0, "projectile");
+
+    std::cout << "Game Initialised" << std::endl;
 }
 
 void Game::handleEvents()
@@ -92,12 +113,49 @@ void Game::handleEvents()
 
 void Game::update()
 {
+    Vector2D playerPos = newPlayer.getComponent<TransformComponent>().position;
+
     manager.refresh();
     manager.update();
 
-    for (auto cc : colliders)
+    for(auto& c : colliders)
     {
-        Collision::AABB(newPlayer.getComponent<ColliderComponent>(), *cc);
+        if(Collision::AABB(newPlayer.getComponent<ColliderComponent>(), c->getComponent<ColliderComponent>())) {
+            newPlayer.getComponent<TransformComponent>().position = playerPos;
+        }
+    }
+
+    for(auto& p : projectiles)
+    {
+        if (Collision::AABB(newPlayer.getComponent<ColliderComponent>(), p->getComponent<ColliderComponent>()))
+        {
+            std::cout << "Player hit by projectile" << std::endl;
+            p->destroy();
+        }
+    }
+
+    auto playerTransform = newPlayer.getComponent<TransformComponent>();
+    camera.x = playerTransform.position.x - config.width / 2;
+    camera.y = playerTransform.position.y - config.height / 2;
+
+    if (camera.x < 0)
+    {
+        camera.x = 0;
+    }
+
+    if (camera.y < 0)
+    {
+        camera.y = 0;
+    }
+
+    if (camera.x > camera.w)
+    {
+        camera.x = camera.w;
+    }
+
+    if (camera.y > camera.h)
+    {
+        camera.y = camera.h;
     }
 }
 
@@ -105,9 +163,31 @@ void Game::render()
 {
     SDL_RenderClear(renderer);
     
-    // This is where we would add stuff to render
-    // map->render();
-    manager.render();
+    auto tileTexture = assets->getTexture("terrain");
+    for(auto& t : tiles)
+    {
+        auto tileCompoennt = t->getComponent<TileComponent>();
+        auto srcRect = tileCompoennt.getSrcRect();
+        auto destRect = tileCompoennt.getDestRect();
+        TextureManager::Render(tileTexture, rectToSDLRect(srcRect), rectToSDLRect(destRect, Game::camera), SDL_FLIP_NONE);
+    }
+
+    auto colliderTexture = assets->getTexture("collider");
+    for(auto& c : colliders)
+    {
+        auto& collider = c->getComponent<ColliderComponent>().collider;
+        TextureManager::Render(colliderTexture, { 0,0,32,32 }, rectToSDLRect(collider, Game::camera), SDL_FLIP_NONE);
+    }
+
+    for(auto& p : players)
+    {
+        p->render();
+    }
+
+    for(auto& p : projectiles)
+    {
+        p->render();
+    }
 
     SDL_RenderPresent(renderer);
 }
@@ -118,10 +198,4 @@ void Game::clean()
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     std::cout << "Game Cleaned" << std::endl;
-}
-
-void Game::addTile(int id, int x, int y)
-{
-    auto& tile(manager.addEntity());
-    tile.addComponent<TileComponent>(x, y, 32, 32, id);
 }

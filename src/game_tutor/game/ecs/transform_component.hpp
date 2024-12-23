@@ -13,11 +13,11 @@ public:
     int width = 32;
     int scale = 1;
 
-    int speed = 1;
+    int speed = 2;
 
     TransformComponent();
-    TransformComponent(float x, float y);
-    TransformComponent(float x, float y, int h, int w, int s);
+    TransformComponent(Vector2D position);
+    TransformComponent(Vector2D position, int h, int w, int scale);
 
     void init() override;
     void update() override;

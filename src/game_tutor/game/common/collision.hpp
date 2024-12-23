@@ -1,11 +1,12 @@
 #pragma once
 
-struct SDL_Rect;
+#include "common.hpp"
+
 class ColliderComponent;
 
 class Collision
 {
 public:
-    static bool AABB(const SDL_Rect& recA, const SDL_Rect& recB);
+    static bool AABB(const Rect& recA, const Rect& recB);
     static bool AABB(const ColliderComponent& colA, const ColliderComponent& colB);
 };

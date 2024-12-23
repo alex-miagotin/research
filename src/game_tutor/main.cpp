@@ -17,17 +17,16 @@ int main() {
     int frameTime;
 
     Game *game = new Game();
-    game->init({PROJECT_NAME, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false});
+    game->init({PROJECT_NAME, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 32 * 25, 32 * 20, false, 2, 32});
 
     while (game->running()) {
-
-        frameStart = SDL_GetTicks();
+        frameStart = SDL_GetTicks64();
 
         game->handleEvents();
         game->update();
         game->render();
 
-        frameTime = SDL_GetTicks() - frameStart;
+        frameTime = SDL_GetTicks64() - frameStart;
 
         if (frameDelay > frameTime) {
             SDL_Delay(frameDelay - frameTime);

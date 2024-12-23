@@ -19,7 +19,11 @@ if(EMSCRIPTEN)
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -s ALLOW_MEMORY_GROWTH=1")
 else()
+    # game tutor ECS
     add_subdirectory(src/game_tutor)
+
+    # physics
+    add_subdirectory(src/physics)
 
     find_package(SDL2_image)
     find_package(SDL2_ttf)

@@ -1,3 +1,5 @@
+https://lazyfoo.net/tutorials/SDL/
+
 1. Render window
 2. Render texture
 3. Render image
