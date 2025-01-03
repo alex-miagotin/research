@@ -1,9 +1,13 @@
 #pragma once
 
+#include <SDL2/SDL.h>
+
+#include "../map/game_map.hpp"
+
 #define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 640
 
-namespace engine {
+namespace core {
 
 class Engine
 {
@@ -25,6 +29,7 @@ public:
     void events();
 
     inline bool isRunning() const { return m_isRunning; }
+    SDL_Renderer* getRenderer() const { return m_renderer; }
 
 private:
     Engine() = default;
@@ -35,8 +40,11 @@ private:
     bool m_isRunning = false;
     static Engine* m_instance;
 
+    SDL_Window *m_window;
+    SDL_Renderer *m_renderer;
+    SDL_Event m_event;
 
-
+    map::GameMap* m_levelMap;
 };
 
-} // namespace engine
+} // namespace core

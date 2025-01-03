@@ -1,5 +1,8 @@
 #include "vector2D.hpp"
 
+namespace core::physics
+{
+
 Vector2D::Vector2D() : x(0), y(0) {}
 Vector2D::Vector2D(float x, float y) : x(x), y(y) {}
 
@@ -53,7 +56,7 @@ Vector2D& Vector2D::operator/=(const Vector2D& vec) {
     return divide(vec);
 }
 
-Vector2D& Vector2D::operator*(const int& i) {
+Vector2D& Vector2D::operator*(const float& i) {
     this->x *= i;
     this->y *= i;
     return *this;
@@ -69,3 +72,5 @@ std::ostream& operator<<(std::ostream& stream, const Vector2D& vec) {
     stream << "Vector2D: (" << vec.x << ", " << vec.y << ")";
     return stream;
 }
+
+} // namespace core::physics

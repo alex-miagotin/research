@@ -1,9 +1,7 @@
-#include <iostream>
-#include <string>
-
 #include "SDL2/SDL.h"
 
-#include "engine/engine.hpp"
+#include "core/engine.hpp"
+#include "timer/timer.hpp"
 
 #ifndef PROJECT_NAME
     #define PROJECT_NAME ""
@@ -11,27 +9,18 @@
 
 int main(const int argc, const char* argv[]) {
 
-    engine::Engine::getInstance()->init();
+    auto _engine = core::Engine::getInstance();
+    _engine->init();
 
-    constexpr int FPS = 60;
-    constexpr int frameDelay = 1000 / FPS;
+    while (_engine->isRunning()) {
+        _engine->events();
+        _engine->update();
+        _engine->render();
 
-    Uint32 frameStart;
-    int frameTime;
-
-    while (true) {
-        frameStart = SDL_GetTicks64();
-
-        engine::Engine::getInstance()->events();
-        engine::Engine::getInstance()->update();
-        engine::Engine::getInstance()->render();
-
-        frameTime = SDL_GetTicks64() - frameStart;
-
-        if (frameDelay > frameTime) {
-            SDL_Delay(frameDelay - frameTime);
-        }
+        Timer::getInstance()->tick();        
     }
+
+    _engine->cleanup();
 
     return 0;
 }

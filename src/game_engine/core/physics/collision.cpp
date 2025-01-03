@@ -1,6 +1,7 @@
-#include "../ecs/collider_component.hpp"
-
 #include "collision.hpp"
+
+namespace core::physics
+{
 
 bool Collision::AABB(const Rect& recA, const Rect& recB)
 {
@@ -36,3 +37,5 @@ bool Collision::CircleCircle(const Circle& cirA, const Circle& cirB)
     }
     return false;
 }
+
+} // namespace core::physics

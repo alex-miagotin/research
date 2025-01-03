@@ -3,7 +3,7 @@
 #include <bitset>
 #include <array>
 
-namespace entity_component_system
+namespace core::entity_component_system
 {
     
 class Component;
@@ -32,4 +32,4 @@ using GroupBitSet = std::bitset<maxGroups>;
 using ComponentBitSet = std::bitset<maxComponents>;
 using ComponentArray = std::array<Component*, maxComponents>;
     
-}
+} // namespace core::entity_component_system

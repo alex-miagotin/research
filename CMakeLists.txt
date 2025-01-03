@@ -22,8 +22,8 @@ else()
     # game tutor ECS
     add_subdirectory(src/game_tutor)
 
-    # physics
-    add_subdirectory(src/physics)
+    # game_engine
+    add_subdirectory(src/game_engine)
 
     find_package(SDL2_image)
     find_package(SDL2_ttf)

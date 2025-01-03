@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+namespace core::physics
+{
+
 class Vector2D
 {
 public:
@@ -26,8 +29,13 @@ public:
     Vector2D& operator*=(const Vector2D& vec);
     Vector2D& operator/=(const Vector2D& vec);
 
-    Vector2D& operator*(const int& i);
+    Vector2D& operator*(const float& i);
     Vector2D& zero();
 
     friend std::ostream& operator<<(std::ostream& stream, const Vector2D& vec);
+
+private:
+
 };
+
+} // namespace core::physics
