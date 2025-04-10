@@ -1,28 +1,15 @@
 {
     "configurations": [
         {
-            "name": "(gdb) Launch",
-            "type": "cppdbg",
+            "name": "(lldb) Launch game engine",
+            "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/build/bin/game_tutor",
+            "program": "${workspaceFolder}/build/bin/game_engine",
             "args": [],
-            "stopAtEntry": false,
             "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ]
+            "breakpointMode": "file"
         }
     ],
+    "compounds": [],
+    "version": "0.2.0"
 }

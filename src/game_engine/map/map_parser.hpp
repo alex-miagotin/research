@@ -20,13 +20,13 @@ public:
         return m_instance;
     }
 
-    bool load();
+    bool load(const std::string &mapId, const std::string &mapFile);
     void clean();
 
-    inline GameMap* getMap(const char* id) { return m_maps[id]; }
+    inline GameMap* getMap(const std::string &id) { return m_maps[id]; }
 
 private:
-    bool parse(const char* mapId, const char* mapFile);
+    bool parse(const std::string &mapId, const std::string& mapFile);
     Tileset parseTileSet(TiXmlElement* xmlTileset);
     TileMapLayer parseTileLayer(TiXmlElement* xmlLayer);
 
@@ -34,7 +34,7 @@ private:
     MapParser() = default;
     static MapParser* m_instance;
 
-    std::map<const char*, GameMap*> m_maps;
+    std::map<const std::string, GameMap*> m_maps;
 };
 
 } // namespace map

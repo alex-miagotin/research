@@ -20,7 +20,7 @@ public:
     void translateY(const float& dy);
     void translate(const Vector2D& vec);
 
-    const Vector2D& getPosition();
+    const Vector2D* getPosition();
     void setPosition(const Vector2D& vec);
 };
 

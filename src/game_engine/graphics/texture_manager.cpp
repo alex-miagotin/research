@@ -5,6 +5,7 @@
 #include <SDL_image.h>
 
 #include "../core/engine.hpp"
+#include "../camera/camera.hpp"
 
 #ifndef ASSETS_PATH
     #define ASSETS_PATH ""
@@ -57,8 +58,18 @@ void TextureManager::clean()
 
 void TextureManager::render(const char* id, const int x, const int y, const int width, const int height, const int row, const int frame, SDL_RendererFlip flip)
 {
+    core::physics::Vector2D camera = game_engine::Camera::getInstance()->getPosition();
     SDL_Rect srcRect = {width * frame, height * row, width, height};
-    SDL_Rect destRect = {x, y, width, height};
+    SDL_Rect destRect = {x - camera.x, y - camera.y, width, height};
+
+    SDL_RenderCopyEx(core::Engine::getInstance()->getRenderer(), textures[id], &srcRect, &destRect, 0.0, NULL, flip);
+}
+
+void TextureManager::renderBackground(const char* id, const int x, const int y, const int width, const int height, const int row, const int frame, SDL_RendererFlip flip)
+{
+    core::physics::Vector2D camera = game_engine::Camera::getInstance()->getPosition();
+    SDL_Rect srcRect = {width * frame, height * row, width, height};
+    SDL_Rect destRect = {x - camera.x * 0.5f, y - camera.y * 0.5f, width, height};
 
     SDL_RenderCopyEx(core::Engine::getInstance()->getRenderer(), textures[id], &srcRect, &destRect, 0.0, NULL, flip);
 }

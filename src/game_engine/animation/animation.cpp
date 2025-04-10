@@ -4,7 +4,7 @@
 
 void Animation::update()
 {
-    m_spriteFrame = (SDL_GetTicks() / m_animSpeed) % m_frameCount;
+    m_spriteFrame = (SDL_GetTicks64() / m_animSpeed) % m_frameCount;
 }
 
 void Animation::render(float x, float y, float spriteWidth, float spriteHeight)

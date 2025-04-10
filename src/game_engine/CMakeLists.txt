@@ -15,7 +15,6 @@ set (
     core/components/transform_component.cpp
     # core physics
     core/physics/vector2D.cpp
-    core/physics/collision.cpp
     # graphics
     graphics/texture_manager.cpp
     # animation
@@ -29,6 +28,8 @@ set (
     # map
     map/tile_layer.cpp
     map/map_parser.cpp
+    # camera
+    camera/camera.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})

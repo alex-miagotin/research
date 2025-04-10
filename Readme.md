@@ -31,3 +31,10 @@
 
 #### Conan usefull
 1. `conan profile detect --force`
+
+#### Tools
+1. `CMake Tools` - CMake support
+2. `CMake` - CMake support
+3. `CodeLLDB` - Debugger support
+4. `clangd` - C++ support
+5. `Dev Containers` - Dev container support

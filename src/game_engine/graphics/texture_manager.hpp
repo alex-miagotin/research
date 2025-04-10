@@ -21,6 +21,7 @@ public:
     void clean();
 
     void render(const char* id, const int x, const int y, const int width, const int height, const int row, const int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void renderBackground(const char* id, const int x, const int y, const int width, const int height, const int row, const int frame, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 private:
     TextureManager() = default;

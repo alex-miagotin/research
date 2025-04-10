@@ -18,6 +18,7 @@ public:
 
     void tick();
     inline float getDeltaTime() const { return m_deltaTime; }
+    inline float getInitialisedTime() const;
 
 private:
     Timer() = default;

@@ -5,6 +5,8 @@
 #include "../graphics/texture_manager.hpp"
 #include "../inputs/input.hpp"
 
+#include "../camera/camera.hpp"
+
 Monster::Monster(const Properties& properties): GameObject(properties) {
     m_rigidbody = new core::physics::Rigidbody();
 
@@ -29,13 +31,17 @@ void Monster::update(float dt) {
     m_rigidbody->update(dt);
 
     m_transform->translateX(m_rigidbody->getPosition().x);
-    // m_transform->translateY(m_rigidbody->getPosition().y);
+    m_transform->translateY(m_rigidbody->getPosition().y);
 
     m_animation->update();
 }
     
 void Monster::render() {
-    m_animation->render(m_transform->getPosition().x, m_transform->getPosition().y, m_width, m_height);
+    m_animation->render(m_transform->getPosition()->x, m_transform->getPosition()->y, m_width, m_height);
+
+    auto cam = game_engine::Camera::getInstance()->getPosition();
+    SDL_Rect rect = {m_transform->getPosition()->x - cam.x, m_transform->getPosition()->y - cam.y, m_width, m_height};
+    SDL_RenderDrawRect(core::Engine::getInstance()->getRenderer(), &rect);
 }
     
 void Monster::clean() {

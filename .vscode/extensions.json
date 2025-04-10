@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "llvm-vs-code-extensions.vscode-clangd",
+        "dbaeumer.vscode-eslint",
+        "github.copilot",
+        "eamodio.gitlens",
+        "firsttris.vscode-jest-runner",
+        "vadimcn.vscode-lldb",
+        "ms-vscode.cmake-tools"
+    ]
+}

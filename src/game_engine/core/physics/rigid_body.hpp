@@ -32,9 +32,9 @@ public:
     inline void applyFrictionY(const float& fY) { m_friction.y = fY; }
     inline void unsetFriction() { m_friction.zero(); }
 
-    inline Vector2D getPosition() const { return m_position; }
-    inline Vector2D getVelocity() const { return m_velocity; }
-    inline Vector2D getAcceleration() const { return m_acceleration; }
+    inline const Vector2D getPosition() const { return m_position; }
+    inline const Vector2D getVelocity() const { return m_velocity; }
+    inline const Vector2D getAcceleration() const { return m_acceleration; }
     inline float getMass() const { return m_mass; }
 
     void update(float dt)

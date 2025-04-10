@@ -28,9 +28,9 @@ void TransformComponent::translate(const Vector2D &vec)
     position += vec;
 }
 
-const TransformComponent::Vector2D &TransformComponent::getPosition()
+const TransformComponent::Vector2D *TransformComponent::getPosition()
 {
-    return position;
+    return &position;
 }
 
 void TransformComponent::setPosition(const Vector2D &vec)

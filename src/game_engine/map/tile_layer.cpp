@@ -14,10 +14,7 @@ TileLayer::TileLayer(int rowsCount, int columnsCount, TileMapLayer tileMapLayer,
     for (auto& tileset : m_tilesets) {
         graphics::TextureManager::getInstance()->load(tileset.name, tileset.source);
     }
-}
 
-void TileLayer::render()
-{
     int index = 0;
     for(auto tile: m_tileMapLayer) {
         if (tile > 0) {
@@ -30,14 +27,29 @@ void TileLayer::render()
                     int x = index % m_columnsCount;
                     int y = index / m_columnsCount;
 
-                    SDL_Rect destRect = {x * tileset.tileWidth, y * tileset.tileHeight, tileset.tileWidth, tileset.tileHeight};
-
-                    graphics::TextureManager::getInstance()->render(tileset.name, x * tileset.tileWidth, y * tileset.tileHeight, tileset.tileWidth, tileset.tileHeight, tileRow, tileCol);
+                    m_tiles.push_back(
+                        {
+                            .textureID = tileset.name,
+                            .tileRow = tileRow,
+                            .tileCol = tileCol,
+                            .width = tileset.tileWidth,
+                            .height = tileset.tileHeight,
+                            .x = x * tileset.tileWidth,
+                            .y = y * tileset.tileHeight
+                        }
+                    );
                 }
             }
         }
 
         index++;
+    }
+}
+
+void TileLayer::render()
+{
+    for (auto& tile : m_tiles) {
+        graphics::TextureManager::getInstance()->render(tile.textureID, tile.x, tile.y, tile.width, tile.height, tile.tileRow, tile.tileCol);
     }
 }
 

@@ -4,6 +4,7 @@
 
 #include "../core/interface/IObject.hpp"
 #include "../core/components/transform_component.hpp"
+#include "../core/common.hpp"
 
 struct Properties
 {
@@ -25,6 +26,18 @@ public:
         m_textureID = properties.textureID;
         m_flip = properties.spriteFlip;
     };
+
+    inline core::components::TransformComponent* getTransform() const {
+        return m_transform;
+    }
+
+    inline const int getWidth() const {
+        return m_width;
+    }
+
+    inline const int getHeight() const {
+        return m_height;
+    }
 
 protected:
     core::components::TransformComponent* m_transform;

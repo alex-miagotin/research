@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "layer.hpp"
+#include "../core/common.hpp"
 
 namespace map
 {
@@ -29,6 +30,18 @@ class TileLayer: public Layer
 {
 
 public:
+    struct Tile
+    {
+        const char* textureID;
+        int tileRow;
+        int tileCol;
+        int width;
+        int height;
+        int x;
+        int y;
+    };
+
+public:
     TileLayer(int rowsCount, int columnsCount, TileMapLayer tileMapLayer, TilesetList tilesets);
 
     void render() override;
@@ -36,6 +49,7 @@ public:
 
     inline TileMapLayer& getTileMapLayer() { return m_tileMapLayer; }
     inline TilesetList& getTilesets() { return m_tilesets; }
+    inline std::vector<Tile>& getTiles() { return m_tiles; }
 
 private:
     int m_rowsCount;
@@ -43,6 +57,7 @@ private:
 
     TileMapLayer m_tileMapLayer;
     TilesetList m_tilesets;
+    std::vector<Tile> m_tiles{};
 };
 
 } // namespace map

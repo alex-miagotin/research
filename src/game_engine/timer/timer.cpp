@@ -6,7 +6,7 @@ Timer* Timer::m_instance = nullptr;
 
 void Timer::tick()
 {
-    float currentTime = SDL_GetTicks();
+    float currentTime = getInitialisedTime();
     m_deltaTime = (currentTime - m_lastTime) * (TARGET_FPS / 1000.0f);
     if (m_deltaTime > TARGET_DELTA_TIME)
     {
@@ -14,4 +14,9 @@ void Timer::tick()
     }
     
     m_lastTime = currentTime;
+}
+
+inline float Timer::getInitialisedTime() const
+{
+    return SDL_GetTicks64();
 }

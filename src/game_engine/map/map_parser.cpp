@@ -17,15 +17,15 @@ void MapParser::clean()
     m_maps.clear();
 }
 
-bool MapParser::load()
+bool MapParser::load(const std::string& mapId, const std::string& mapFile)
 {
-    return parse("map1", (std::string(ASSETS_PATH) + "/maps/map1.tmx").c_str());
+    return parse(mapId, (std::string(ASSETS_PATH) + mapFile));
 }
 
-bool MapParser::parse(const char* mapId, const char* mapFile)
+bool MapParser::parse(const std::string &mapId, const std::string &mapFile)
 {
     TiXmlDocument doc;
-    if (!doc.LoadFile(mapFile)) {
+    if (!doc.LoadFile(mapFile.c_str())) {
         std::cerr << "Failed to load map file: " << mapFile << std::endl;
         return false;
     }

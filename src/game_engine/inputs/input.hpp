@@ -17,26 +17,6 @@ public:
     void listen();
     bool getKeyDown(SDL_Scancode key);
 
-    // void update();
-
-    // bool isKeyDown();
-    // bool isKeyUp();
-    // bool isKeyPressed();
-    // bool isKeyReleased();
-
-    // bool isMouseButtonDown();
-    // bool isMouseButtonUp();
-    // bool isMouseButtonPressed();
-    // bool isMouseButtonReleased();
-
-    // bool isMouseMotion();
-
-    // bool isMouseWheel();
-
-    // bool isQuit();
-
-    // void clean();
-
 private:
     Input(/* args */);
     ~Input();
