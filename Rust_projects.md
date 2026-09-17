@@ -189,7 +189,3 @@ cargo run -- config/example.json
 
 Happy Rusting! 🦀
 ```
-
----
-
-Let me know if you want this as a downloadable `.md` file or to generate any starter code scaffolding!
