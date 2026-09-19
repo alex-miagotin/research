@@ -1,13 +1,13 @@
 Simulating stone using molecules requires a **molecular dynamics (MD) simulation** approach, where the interactions between atoms or molecules are modeled to replicate the physical behavior of a material like stone (which is typically composed of minerals such as quartz, feldspar, and mica). Stones, such as granite, are composed of multiple minerals, each with its own atomic structure and bonding.
 
-In this case, you're looking to simulate a **stone material** at the molecular level, which means that you'd need to:
+The goal is to simulate a **stone material** at the molecular level, which means:
 - Define the structure of the stone.
 - Model atomic interactions (e.g., bonds, forces, etc.).
 - Simulate their behavior using basic principles of physics, like Newton's laws of motion.
 
 **C++** can be used for such simulations, but it is computationally expensive. Molecular dynamics simulations often rely on specialized libraries and tools, such as **LAMMPS**, **GROMACS**, or **AMBER**, which are designed for large-scale simulations of atomic systems. You can also implement simpler simulations using **classical potential models** like **Lennard-Jones**, **EAM (Embedded Atom Model)**, or **Tersoff potential** to represent the interatomic forces in materials like stone.
 
-Here, I'll outline a basic approach for a molecular dynamics simulation using C++ (without relying on complex external libraries like LAMMPS, though you can integrate those libraries later for more advanced simulations).
+This note outlines a basic approach for a molecular dynamics simulation using C++ (without relying on complex external libraries like LAMMPS, though you can integrate those libraries later for more advanced simulations).
 
 ### Basic Outline for Molecular Dynamics Simulation in C++
 

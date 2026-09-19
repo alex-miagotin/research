@@ -1,4 +1,10 @@
-```
+# Code skeleton
+
+Interfaces, concrete devices and simulation helpers for the instrument controller. Design sketch, not built or tested.
+
+## Devices and serial port
+
+```cpp
 // IDevice.h
 #pragma once
 #include <string>
@@ -193,16 +199,9 @@ void MainControlBoard::shutdown() {
 }
 ```
 
-✅ Codebase now includes:
+## Mock serial port
 
-- `IDevice` interface
-- `ISerialPort` interface
-- `RealSerialPort` implementation
-- `TMC4361Motor`, `TMC262Motor`, `ThermalController`, `MainControlBoard` concrete classes
-
-Let me know if you'd like to:
-- Add mock serial port for testing
-```
+```cpp
 // MockSerialPort.h
 #pragma once
 #include "ISerialPort.h"
@@ -249,8 +248,10 @@ void MockSerialPort::sendAsync(const std::string& command, std::function<void(st
     }).detach();
 }
 ```
-- Simulate command execution
-```
+
+## Simulated command executor
+
+```cpp
 // SimulatedCommandExecutor.h
 #pragma once
 #include <string>
@@ -282,8 +283,10 @@ void SimulatedCommandExecutor::executeAsync(const std::string& command, std::fun
     }).detach();
 }
 ```
-- Extend with error simulation, delays, or custom responses
-```
+
+## Simulated command executor with failures and delays
+
+```cpp
 // SimulatedCommandExecutor.h
 #pragma once
 #include <string>
@@ -339,4 +342,3 @@ bool SimulatedCommandExecutor::shouldFail() {
     return dis(gen) == 0;
 }
 ```
-- Add logging or configuration support

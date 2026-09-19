@@ -1,4 +1,4 @@
-### Instalation and configuration Nvim
+### Installation and configuration Nvim
 1. Install nvim (Ubuntu)
 ```
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
@@ -21,7 +21,7 @@ lua->custom->plugins.lua
 ```
 
 
-### Usefull commands
+### Useful commands
 ```
 space+th
 ctrl+n - vim tree

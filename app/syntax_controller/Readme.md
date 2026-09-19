@@ -1,9 +1,4 @@
-Absolutely! Here's your fully updated and clean `README.md` — all sections together, formatted properly, using **CMake + Ninja**, **C++23**, **Electron + React**, **Protocol Buffers**, **Conan**, **Google Test**, **Jest**, **CPack**, and an **SVG diagram** for architecture.
-
----
-
-```markdown
-# 🚀 Project Name
+# 🚀 Instrument Controller (design study)
 
 A modern, modular C++23 application for instrument and device communication, with a React + Electron UI, multithreaded backend, Protocol Buffers messaging, and full test + package pipeline.
 
@@ -144,13 +139,3 @@ set(CPACK_GENERATOR "DEB;NSIS")
 include(CPack)
 ```
 
----
-
-## 📄 License
-
-MIT or your preferred license.
-```
-
----
-
-Let me know if you'd like a GitHub repo scaffold with this `README.md` and a working project structure (backend, UI, CMake setup, `.proto` files, etc.) to kickstart development!

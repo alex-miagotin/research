@@ -1,9 +1,9 @@
-✅ Logging and configuration support added:
+# Logger and Config
 
-- `Logger`: Console + optional file output with thread safety
-- `Config`: Central key-value config store
+- `Logger`: console and optional file output, thread-safe
+- `Config`: central key-value config store
 
-You can now do:
+Usage:
 ```cpp
 Logger::instance().log("System started");
 Logger::instance().enableFileLogging("log.txt");

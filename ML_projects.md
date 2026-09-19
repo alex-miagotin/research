@@ -1,7 +1,6 @@
----
 # 🧠 Machine Learning Pet Projects
 
-Welcome! This repository includes several fun and educational machine learning projects designed to help you learn ML step-by-step. Whether you're a beginner, a curious kid, or just exploring, these projects will guide you through real-world machine learning concepts.
+Welcome! This backlog describes several fun and educational machine learning projects designed to help you learn ML step-by-step. Whether you're a beginner, a curious kid, or just exploring, these projects will guide you through real-world machine learning concepts.
 
 ---
 
@@ -52,15 +51,9 @@ ml-pet-projects/
 
 ## 🚀 How to Get Started
 
-1. Clone the repo:
-```bash
-git clone https://github.com/yourusername/ml-pet-projects.git
-cd ml-pet-projects
-```
-
-2. Choose a project folder.
-3. Follow the instructions in the project’s `README.md`.
-4. Run the code using Python 3.8+.
+1. Pick a project and create its folder using the structure above.
+2. Follow the instructions in the project’s `README.md`.
+3. Run the code using Python 3.8+.
 
 ---
 
@@ -123,6 +116,3 @@ Have a cool idea or want to improve one of the projects? Open a PR!
 ---
 
 Happy learning! 🎉
-```
-
----

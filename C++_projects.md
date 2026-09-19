@@ -1,6 +1,6 @@
 # C++ Pet Projects Suite
 
-This repository contains a set of small C++ pet projects built using modern C++23, OpenCV, serial communication, and desktop graphics utilities. Each module is self-contained and demonstrates practical features ranging from camera feeds to hardware interfacing.
+This backlog describes a set of small C++ pet projects built using modern C++23, OpenCV, serial communication, and desktop graphics utilities. Each module is self-contained and demonstrates practical features ranging from camera feeds to hardware interfacing.
 
 ---
 
@@ -92,12 +92,3 @@ Run any executable, for example:
 
 These are hobby projects—PRs and improvements are welcome!
 
----
-
-## 📜 License
-
-MIT License
-
-```
-
-Let me know if you want it broken into sub-projects with individual READMEs too!

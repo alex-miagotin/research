@@ -43,7 +43,7 @@ This repository is where I try things out before they become real projects. It c
 | SDL2 tutorial notes | [`src/sdl2_tutor`](src/sdl2_tutor) | Notes | Lesson outline (window, textures, sprites, AABB collision, gravity) |
 | Chat UI in SDL2 | [`src/sdl2_chat_ui`](src/sdl2_chat_ui) | Notes | Approach and sample code for a chat window |
 | GTK+ | [`src/gtk+`](src/gtk+) | Notes | Minimal GTK 3 window examples in C and Python |
-| Molecular dynamics | [`src/molecular_dunamic_simulation`](src/molecular_dunamic_simulation) | Notes | Lennard-Jones simulation approach in C++ |
+| Molecular dynamics | [`src/molecular_dynamics_simulation`](src/molecular_dynamics_simulation) | Notes | Lennard-Jones simulation approach in C++ |
 | Neovim | [`nvim`](nvim) | Notes | NvChad install and configuration guide |
 | Idea backlogs | root `*.md` files | Ideas | See [Idea backlogs](#idea-backlogs) |
 
@@ -162,7 +162,7 @@ research/
 │   ├── sdl2_tutor/             # lesson outline
 │   ├── sdl2_chat_ui/           # chat UI notes
 │   ├── gtk+/                   # GTK examples (C, Python)
-│   └── molecular_dunamic_simulation/
+│   └── molecular_dynamics_simulation/
 ├── scripts/                    # build, dependency and run helpers
 ├── nvim/                       # Neovim setup guide
 ├── .vscode/                    # recommended extensions, launch and editor settings
@@ -188,7 +188,7 @@ Project ideas I want to build later, each with a proposed folder structure and f
 ## Developer tooling
 
 - **VS Code** extensions are recommended in [`.vscode/extensions.json`](.vscode/extensions.json): clangd, CodeLLDB, CMake Tools, GitLens, ESLint, Jest Runner and Copilot. Dev Containers is also useful.
-- **Neovim**: see the [NvChad setup guide](nvim/nvim_toutor.md).
+- **Neovim**: see the [NvChad setup guide](nvim/nvim_tutor.md).
 - **Dependency graph**: `./scripts/conan_graph.sh` writes `graph.html` with the Conan dependency graph.
 
 ## Status and conventions
