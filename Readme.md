@@ -196,4 +196,4 @@ Project ideas I want to build later, each with a proposed folder structure and f
 - This is a working notebook: the design studies and idea backlogs are drafts and will change.
 - The Linux Emscripten setup steps are untested.
 - The default branch is `development`.
-- The source code and documentation are released under the [MIT License](LICENSE). Image, map and font assets (`src/game_engine/assets`, `src/game_tutor/resources`, `src/wasm/assets`) are not part of that grant and keep whatever terms their original authors set.
+- The source code and documentation are released under the [MIT License](LICENSE). Image and map assets (`src/game_engine/assets`, `src/game_tutor/resources`) are not part of that grant and keep whatever terms their original authors set. The WebAssembly game uses the Liberation Sans Bold font, licensed under the [SIL Open Font License 1.1](src/wasm/assets/LiberationSans-OFL.txt).

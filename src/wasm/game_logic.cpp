@@ -377,7 +377,7 @@ int main()
     SDL_CreateWindowAndRenderer(400, 400, 0, &window, &renderer);
 
     TTF_Init();
-    font = TTF_OpenFont("assets/arial-bold.ttf", 30);
+    font = TTF_OpenFont("assets/LiberationSans-Bold.ttf", 30);
 
     generateCache();
 
